@@ -1,0 +1,15 @@
+name: postmerge-canary
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  postmerge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run repository post-merge script
+        env:
+          VM7_CODEINJ_CANARY: ${{ secrets.VM7_CODEINJ_CANARY }}
+        run: bash ci/postmerge.sh
