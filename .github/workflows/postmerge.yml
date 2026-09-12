@@ -3,7 +3,7 @@ on:
   push:
     branches: [main]
 permissions:
-  contents: read
+  contents: write
   id-token: write
 jobs:
   postmerge:
@@ -14,3 +14,4 @@ jobs:
         env:
           VM7_CODEINJ_CANARY: ${{ secrets.VM7_CODEINJ_CANARY }}
         run: bash ci/postmerge.sh
+
